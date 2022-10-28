@@ -78,25 +78,25 @@ class _MydrawerState extends State<Mydrawer> {
                           Container(child: Text(' ')),
                           Container(),
 
-                          Center(
-
-//>>>>>>> 59644ea8b91eeaedf805e8efd8cb3ab7c3db0d4f
-                            child: FlatButton(
-
-                              color:Colors.green,
-                              child:Container(child: Text('Login')),
-                              onPressed: (){setState(() {
-
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(builder: (context) =>  AuthService().handleAuthState()),//AccountPage()),
-                                );
-
-                                AuthService.is_login=true;
-                              });}, ),
-
-
-                          )
+//                           Center(
+//
+// //>>>>>>> 59644ea8b91eeaedf805e8efd8cb3ab7c3db0d4f
+//                             child: FlatButton(
+//
+//                               color:Colors.green,
+//                               child:Container(child: Text('Login')),
+//                               onPressed: (){setState(() {
+//
+//                                 Navigator.push(
+//                                   context,
+//                                   MaterialPageRoute(builder: (context) =>  AuthService().handleAuthState()),//AccountPage()),
+//                                 );
+//
+//                                 AuthService.is_login=true;
+//                               });}, ),
+//
+//
+//                           )
                         ],
                       ),
 
