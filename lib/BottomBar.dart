@@ -23,7 +23,7 @@ class _Bottom1State extends State<Bottom1> {
       backgroundColor: Colors.black,
       unselectedItemColor: Colors.white,
       selectedItemColor: Colors.white,
-       
+
 
 // currentIndex: 2,
       type: BottomNavigationBarType.fixed,

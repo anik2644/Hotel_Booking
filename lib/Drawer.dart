@@ -39,7 +39,7 @@ class _MydrawerState extends State<Mydrawer> {
         padding: EdgeInsets.zero,
         children: <Widget>[
           AuthService.is_login ?  UserAccountsDrawerHeader(
-          /*
+            /*
 <<<<<<< HEAD
 
 =======
@@ -54,9 +54,9 @@ class _MydrawerState extends State<Mydrawer> {
             accountEmail: Text(AuthService.email,
                 style: TextStyle(color: Colors.black)),
             currentAccountPicture: CircleAvatar(
-             // backgroundColor: Colors.black,
+              // backgroundColor: Colors.black,
 
-             backgroundImage: NetworkImage(AuthService.Profilepicurl.toString(), ),
+              backgroundImage: NetworkImage(AuthService.Profilepicurl.toString(), ),
             ),
           ):  DrawerHeader(
             decoration: BoxDecoration(
@@ -81,8 +81,10 @@ class _MydrawerState extends State<Mydrawer> {
 
                           Center(
 
-                            child: TextButton(
+//>>>>>>> 59644ea8b91eeaedf805e8efd8cb3ab7c3db0d4f
+                            child: FlatButton(
 
+                              color:Colors.green,
                               child:Container(child: Text('Login')),
                               onPressed: (){setState(() {
 
@@ -107,7 +109,7 @@ class _MydrawerState extends State<Mydrawer> {
           ),
 
 
-         /* ListTile(
+          /* ListTile(
             leading: Icon(Icons.settings, color: Colors.white),
             title:
             Text("Settings", style: TextStyle(color: Colors.white)),
@@ -115,7 +117,7 @@ class _MydrawerState extends State<Mydrawer> {
               Navigator.push(context,MaterialPageRoute(builder: (context) =>SettingsPage()));
             },
           ),  */
-         /* ListTile(
+          /* ListTile(
             leading: Icon(
               Icons.share,
               color: Colors.white,
