@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:untitled12/AuthService.dart';
 
 import '../../../constants.dart';
+import '../../../models/ChatMessage.dart';
+import '../message_screen.dart';
 
 class ChatInputField extends StatelessWidget {
   const ChatInputField({
@@ -87,7 +89,7 @@ class ChatInputField extends StatelessWidget {
 
                           //  print(message_type_box_controller.text);
 
-                          AuthService.ddemeChatMessages.clear();
+                         //- AuthService.ddemeChatMessages.clear();
                          // AuthService.FetchMEssage();
 
 
@@ -114,16 +116,17 @@ class ChatInputField extends StatelessWidget {
                               } else {
                                 await chats.add({
                                   'users': {
+                                    currentUserId.toString(): null,
                                     friendUid.toString(): null,
-                                    currentUserId.toString(): null
+
                                   },
+                                  'name' : currentUserId.toString(),
                                 }).then((value) => {
                                   chatDocId = value});
                                 //   print("Arrogant");
                               }
                             },
-                          )
-                              .catchError((error) {});
+                          ).catchError((error) {});
 
                           chats.doc(chatDocId.toString()).collection('messages').add({
                             'createdOn': FieldValue.serverTimestamp(),
@@ -134,10 +137,22 @@ class ChatInputField extends StatelessWidget {
                             //_textController.text = '';
                           });
 
+                          AuthService.ddemeChatMessages.add(ChatMessage(
+                              message_type_box_controller.text.toString(),
+                              ChatMessageType.text,
+                              MessageStatus.viewed,
+                              true ));
 
 
                           // print("message sent done");
                           message_type_box_controller.text = "";
+
+                          Navigator.pushReplacement(context, MaterialPageRoute(
+                              builder: (BuildContext context) => MessagesScreen()));
+
+
+
+
                         },
                         icon: Icon(Icons.send))
                   ],

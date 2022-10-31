@@ -165,6 +165,10 @@ print(AuthService.ddemeChatMessages.length);
           icon: Icon(Icons.refresh_sharp),
           onPressed: () {
             AuthService.ddemeChatMessages.clear();
+
+            Navigator.pushReplacement(context, MaterialPageRoute(
+                builder: (BuildContext context) => MessagesScreen()));
+
             /*
 
             FirebaseFirestore.instance.collection("adminchats").where('users', isEqualTo: {AuthService.friendUid: null, AuthService.currentUserId: null})

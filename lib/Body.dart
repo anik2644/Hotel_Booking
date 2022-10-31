@@ -56,7 +56,7 @@ class _MybodyState extends State<Mybody> {
                    subtitle: Text(hotellocation),
                  ),
                  */
-                      
+
               ),
 
               ListTile(
@@ -125,33 +125,39 @@ class _MybodyState extends State<Mybody> {
             [
               Container(
                 margin: EdgeInsets.symmetric(vertical: 20.0),
-                height: 900,
-                child:  ListView.builder(
-                  itemCount: Myapp.hotelList.length,
-                  itemBuilder: (context, index) => MyArticles(
-                      Myapp.hotelList[index].x,
-                      Myapp.hotelList[index].name,
-                      "Coxs Bazaar, Bangladesh",index
-                    /*
-                      chat: chatsData[index],
-                      press: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                messagesScreenForAllChatMembers(),
-                          ),
+                height: MediaQuery.of(context).size.height,
+                child: // Column(
+               //   children: [
+                    ListView.builder(
+                      itemCount: Myapp.hotelList.length,
+                      itemBuilder: (context, index) => MyArticles(
+                          Myapp.hotelList[index].x,
+                          Myapp.hotelList[index].name,
+                          "Coxs Bazaar, Bangladesh",index
+                        /*
+                          chat: chatsData[index],
+                          press: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    messagesScreenForAllChatMembers(),
+                              ),
 
-                        );
-                        AuthService.indx=index;
-                        print(index);
-                        //print("object");
+                            );
+                            AuthService.indx=index;
+                            print(index);
+                            //print("object");
 
-                      }
+                          }
 
-                     */
-                  ),
-                ),
+                         */
+                      ),
+                    ),
+                   // SizedBox(height: 100,)
+               //   ],
+               // ),
+
                 /*
                 ListView(
                   scrollDirection: Axis.vertical,
@@ -191,6 +197,9 @@ class _MybodyState extends State<Mybody> {
 
 //>>>>>>> 59644ea8b91eeaedf805e8efd8cb3ab7c3db0d4f
               ),
+             SizedBox(height: 100 ,
+          ),
+             // SizedBox.square(dimension: 100,)
             ],
           ),
         ),
