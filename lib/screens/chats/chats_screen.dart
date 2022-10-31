@@ -14,7 +14,16 @@ class _ChatsScreenState extends State<ChatsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(),
-      body: Body(),
+      body: RefreshIndicator(
+
+             // key: refreshKey,
+               child: Body(),
+              onRefresh: () async {
+                await refreshList();
+              }// Mybody(),
+
+
+      ),
      /* floatingActionButton: FloatingActionButton(
         onPressed: () {},
         backgroundColor: kPrimaryColor,
@@ -26,7 +35,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
      //bottomNavigationBar: buildBottomNavigationBar(),
     );
   }
-
+/*
   BottomNavigationBar buildBottomNavigationBar() {
     return BottomNavigationBar(
       type: BottomNavigationBarType.fixed,
@@ -50,6 +59,8 @@ class _ChatsScreenState extends State<ChatsScreen> {
       ],
     );
   }
+*/
+
 
   AppBar buildAppBar() {
     return AppBar(
@@ -62,5 +73,10 @@ class _ChatsScreenState extends State<ChatsScreen> {
         ),
       ],
     );
+  }
+
+  refreshList() {
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (BuildContext context) => ChatsScreen()));
   }
 }

@@ -1,8 +1,12 @@
 import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled12/AuthService.dart';
+import 'package:untitled12/models/Chat.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../main.dart';
+import '../models/ChatMessage.dart';
+import '../screens/messages/messageScreenForAllChatMembers.dart';
 import 'descriptions.dart';
 
 Widget TnC_logo = Card(
@@ -264,7 +268,8 @@ Widget titleSection(){
 /*
 
 */
-Widget buttonSection = Card(
+Widget buttonSection(BuildContext context) {
+  return Card(
   child:   Row(
 
     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -295,7 +300,31 @@ Widget buttonSection = Card(
 
         ),
 
-        onPressed: () {},
+        onPressed: () {
+          print("near me");
+
+
+          chatsData.add(  Chat(
+            name: Myapp.hotelList[Myapp.selectedHotel].name,
+            lastMessage: "Hi,Please let know about us",
+            image: Myapp.hotelList[Myapp.selectedHotel].x,
+            time: "",
+            isActive: true,
+          ),);
+          demeChatMessages.add(ChatListObject(Myapp.hotelList[Myapp.selectedHotel].name),);
+          AuthService.indx= chatsData.length-1;
+
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) =>
+                  messagesScreenForAllChatMembers(),
+            ),
+
+          );
+
+
+        },
 
       ),
 
@@ -317,6 +346,7 @@ Widget buttonSection = Card(
 
   ),
 );
+}
 
 Future<void> _launchURL(String url) async {
   final Uri uri = Uri(scheme: "http", host: url);

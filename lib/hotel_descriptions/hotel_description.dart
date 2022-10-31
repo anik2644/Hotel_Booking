@@ -10,7 +10,7 @@ import 'Facilities.dart';
 Widget buildNavigationButton() => FloatingActionButton.extended(
     icon: Icon(Icons.book),
     label: Text("Book Now"),
-    backgroundColor: Colors.green,
+    backgroundColor: Colors.black,
     onPressed: () {
       print('press Done');
     });
@@ -45,6 +45,7 @@ class _hotel_descriptionState extends State<hotel_description> {
         backgroundColor: Colors.black,
       ),
       body: SingleChildScrollView(
+
         child: Column(
           children: [
             SizedBox(
@@ -132,27 +133,39 @@ class _hotel_descriptionState extends State<hotel_description> {
             ),
             //ListView.builder(itemBuilder: itemBuilder),
             SingleChildScrollView(
-              child: Container(
-                margin: EdgeInsets.symmetric(vertical: 20.0),
-                height: 400,
-                child: ListView(
-                  scrollDirection: Axis.vertical,
-                  children: <Widget>[
-                    buttonSection,
-                    Popular_facilities(),
-                    description(),
-                    SizedBox(
-                      height: 90,
-                    )
-                  ],
-                ),
+              child: Column(
+                children: [
+                  Column(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.symmetric(vertical: 10.0),
+                        height: 450,
+                        child: ListView(
+                          scrollDirection: Axis.vertical,
+                          children: <Widget>[
+                            buttonSection(context),
+                            Popular_facilities(),
+                            description(),
+                            SizedBox(height: 90,)
+                          ],
+                        ),
+                      ),
+                      Container(
+                        child:  buildNavigationButton(),
+                      )
+                    ],
+                  ),
+
+                ],
               ),
             ),
           ],
         ),
       ),
-      backgroundColor: Colors.white,
-      floatingActionButton: buildNavigationButton(),
+     //bottomNavigationBar: ,
+    //  backgroundColor: Colors.white,
+      //bottomNavigationBar:  buildNavigationButton(),
+      //floatingActionButton: buildNavigationButton(),
     );
   }
 }
