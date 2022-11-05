@@ -6,6 +6,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:untitled12/bodyFavorite.dart';
+import 'package:untitled12/main.dart';
 
 import 'LoginPage.dart';
 import 'home_page.dart';
@@ -160,4 +162,82 @@ class AuthService{
       })
     });
   }
+
+  static AddFavourite()
+  async {
+
+
+
+            var chatDocId= AuthService.email;
+            CollectionReference COl = FirebaseFirestore.instance.collection('favourites');
+            List<dynamic> fav=[];
+
+
+            await COl.doc(chatDocId).get().then((value) => {
+
+
+              if(value.data()==null)
+                {
+                 // var Ls= [],
+                  print("need data"),
+                  COl.doc(chatDocId).set({
+                    'index': FieldValue.arrayUnion(bodyFavorite.favList),
+                    'name[1]': "Mahmud",
+
+                  }),
+                }
+              else{
+                COl.doc(chatDocId).update({
+                  'index': FieldValue.arrayUnion(bodyFavorite.favList),
+                  //'name[1]': "Mahmud",
+
+                }),
+                /*
+                //print(value.data())
+                fav = value["index"],
+                print(fav[0]),
+
+                for(int i=0;i<fav.length;i++)
+                  {
+                    bodyFavorite.favList.add(fav[i])
+                  }
+
+                 */
+              }
+            });
+
+
+
+  }
+
+
+
+ static FetchFavourite() async {
+
+    var chatDocId= AuthService.email;
+    List<dynamic> fav=[];
+    CollectionReference COl = FirebaseFirestore.instance.collection('favourites');
+
+    await COl.doc(chatDocId).get().then((value) => {
+
+
+      if(value.data()==null)
+        {
+          print("need data")
+        }
+      else{
+        //print(value.data())
+        fav = value["index"],
+        print(fav[0]),
+
+        for(int i=0;i<fav.length;i++)
+          {
+            bodyFavorite.favList.add(fav[i])
+          }
+      }
+    });
+
+
+  }
+
 }

@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:untitled12/LoginPage.dart';
+import 'package:untitled12/bodyFavorite.dart';
 import 'AuthService.dart';
 import 'main.dart';
 
@@ -60,6 +61,7 @@ class _HomePageState extends State<HomePage> {
               onPressed: () async {
 
 
+                bodyFavorite.f=1;
                 AuthService.name= "nothing";
                 AuthService.email= "nothing";
                 AuthService.Profilepicurl= "https://commons.wikimedia.org/wiki/File:A_black_image.jpg";

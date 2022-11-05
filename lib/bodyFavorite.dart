@@ -1,136 +1,152 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled12/AuthService.dart';
 
 import 'package:untitled12/hotel_descriptions/hotel_description.dart';
 import 'package:untitled12/main.dart';
 import 'package:untitled12/models/Hotel.dart';
 
-
 class bodyFavorite extends StatefulWidget {
+  static List<int> favList = [];
 
- static List<int> favList=[];
+  static int f=1;
 
   @override
   State<bodyFavorite> createState() => _bodyFavoriteState();
 }
 
-
-
 class _bodyFavoriteState extends State<bodyFavorite> {
+  List<Hotel> display_list1 = List.from(Myapp.hotelList);
+  static List<int> hist1 = [];
 
-
- List<Hotel> display_list1 = List.from(Myapp.hotelList);
- static List<int> hist1=[];
-
- @override
- void initState() {
-  // TODO: implement initState
-  updateList();
-  super.initState();
- }
-
- void updateList() {
-  print(bodyFavorite.favList);
-
-  hist1 = bodyFavorite.favList.toSet().toList();
-  //var reversedList = new List.from(myList.reversed);
-
-  hist1 = List.from(hist1.reversed);
-  display_list1.clear();
-
-  for (int i = 0; i < hist1.length; i++) {
-   display_list1.add(Myapp.hotelList[hist1[i]]);
-  }
-  print(hist1);
- }
 
   @override
- Widget build(BuildContext context) {
-  return Scaffold(
-      //backgroundColor: Colors.white60,//Color(0xFF1f1545),
-      appBar:  AppBar(
-        backgroundColor: Colors.black,
-        title: Center(
-          child: Text("Favourite"),
-        ),
+  void initState() {
+    // TODO: implement initState
+    updateList();
+    ref();
+    super.initState();
 
-      ),
-      body:Padding(
-    padding: EdgeInsets.all(16),
-    child: Column(
-     mainAxisAlignment: MainAxisAlignment.start,
-     crossAxisAlignment: CrossAxisAlignment.start,
-     children: [
-      SizedBox(
-       height: 20,
-      ),
-      Expanded(
-          child: display_list1.length == 0
-              ? Center(
-           child: Text(
-            "No result found",
-            style: TextStyle(
-                color: Colors.black,
-                fontSize: 22,
-                fontWeight: FontWeight.bold),
-           ),
-          )
-              : ListView.builder(
-              itemCount: display_list1.length,
-              itemBuilder: (context, index) => GestureDetector(
+  }
 
-               onTap: () {
-                Myapp.selectedHotel= index;
-                print(Myapp.selectedHotel);
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => hotel_description()));
-               },
-               child: ListTile(
-                contentPadding: EdgeInsets.all(8),
-                title: Text(
-                 display_list1[index].name!,
-                 style: TextStyle(
-                     color: Colors.black,
-                     fontWeight: FontWeight.bold),
-                ),
-                subtitle: Text(
-                 '${display_list1[index].location!}',
-                 style: TextStyle(color: Colors.black),
-                ),
-                leading: Container(
-                 height:50 ,
-                 width: 50,
-                 decoration: BoxDecoration(
-                     image: DecorationImage(
-                      image:NetworkImage(
-                          display_list1[index].x!),
-                     )
-                 ),
+  void updateList() {
+    print(bodyFavorite.favList);
 
-                ),
-                /*
-                trailing: FavoriteButton(
-                 isFavorite: false,
-                 // iconDisabledColor: Colors.white,
-                 valueChanged: (_isFavorite) {
+    hist1 = bodyFavorite.favList.toSet().toList();
+    //var reversedList = new List.from(myList.reversed);
+
+    hist1 = List.from(hist1.reversed);
+    display_list1.clear();
+
+    for (int i = 0; i < hist1.length; i++) {
+      display_list1.add(Myapp.hotelList[hist1[i]]);
+    }
+    print(hist1);
+  }
+
+  GlobalKey<RefreshIndicatorState> refreshKey =
+  GlobalKey<RefreshIndicatorState>();
 
 
-                  print('Is Favorite : $_isFavorite');
-                 },
-                ),*/
-               ),
-              )
-          )
-      )],
-    ),
-   ),
-  );
- }
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Scaffold(
+          //backgroundColor: Colors.white60,//Color(0xFF1f1545),
+           backgroundColor: Colors.black,
+          appBar: AppBar(
+            backgroundColor: Colors.black,
+            title: Center(
+              child: Text("Favourite"),
+            ),
+          ),
+
+          body: RefreshIndicator(
+
+            child: Padding(
+              padding: EdgeInsets.all(16),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Expanded(
+                      child: display_list1.length == 0
+                          ? Center(
+                        child: Text(
+                          "No result found",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      )
+                          : ListView.builder(
+                          itemCount: display_list1.length,
+                          itemBuilder: (context, index) => GestureDetector(
+                            onTap: () {
+                              Myapp.selectedHotel = index;
+                              print(Myapp.selectedHotel);
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          hotel_description()));
+                            },
+                            child: Column(
+
+                              children: [
+                                SizedBox(height: 25,),
+                                ListTile(
+                                  contentPadding: EdgeInsets.all(8),
+                                  tileColor: Colors.white,
+                                  title: Text(
+                                    display_list1[index].name!,
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  subtitle: Text(
+                                    '${display_list1[index].location!}',
+                                    style: TextStyle(color: Colors.black),
+                                  ),
+                                  leading: Container(
+                                    height: 50,
+                                    width: 50,
+                                    decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                          image: NetworkImage(
+                                              display_list1[index].x!),
+                                        )),
+                                  ),
+                                  /*
+                    trailing: FavoriteButton(
+                     isFavorite: false,
+                     // iconDisabledColor: Colors.white,
+                     valueChanged: (_isFavorite) {
 
 
+                      print('Is Favorite : $_isFavorite');
+                     },
+                    ),*/
+                                ),
+                              ],
+                            ),
+                          )))
+                ],
+              ),
+            ),
+            key: refreshKey,
+            onRefresh: () async {
+              print("refresh done");
+              await ref();
+            },
 
-
-
+          )),
+    );
+  }
 
   // List<Hotel> display_list = List.from(Myapp.hotelList);void updateList(String value) {
   //   setState(() {
@@ -226,4 +242,14 @@ class _bodyFavoriteState extends State<bodyFavorite> {
   }
 
  */
+
+  Future<void> ref() async {
+
+    print("i have come to ref function");
+    if (bodyFavorite.favList.isEmpty|| bodyFavorite.f ==1) {
+      bodyFavorite.f=0;
+      bodyFavorite.favList.clear();
+      await AuthService.FetchFavourite();
+    }
+  }
 }

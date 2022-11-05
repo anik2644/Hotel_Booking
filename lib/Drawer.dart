@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled12/AuthService.dart';
+import 'package:untitled12/bodyFavorite.dart';
 //<<<<<<< HEAD
 import 'package:untitled12/screens/chats/chats_screen.dart';
 import 'package:untitled12/screens/messages/message_screen.dart';
@@ -85,7 +86,7 @@ class _MydrawerState extends State<Mydrawer> {
                             //  color:Colors.green,
                               child:Container(child: Text('Login')),
                               onPressed: (){setState(() {
-
+                                 bodyFavorite.f=1;
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(builder: (context) =>  AuthService().handleAuthState()),//AccountPage()),

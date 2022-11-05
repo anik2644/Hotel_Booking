@@ -89,8 +89,8 @@ class _MybodyState extends State<Mybody> {
         SliverAppBar(
           automaticallyImplyLeading: true,
           backgroundColor: Colors.black,
-//floating: true,
-// pinned: true,
+//floating: false,
+ pinned: true,
 // snap: false,
           centerTitle: true,
           title: const Text('Hotel Booking'),

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled12/AuthService.dart';
@@ -257,11 +258,16 @@ Widget titleSection(){
           ),
         ),
         FavoriteButton(
+
+
           isFavorite: false,
           // iconDisabledColor: Colors.white,
-          valueChanged: (_isFavorite) {
+          valueChanged: (_isFavorite) async {
             bodyFavorite.favList.add(Myapp.selectedHotel);
             print('Is Favorite : $_isFavorite');
+           AuthService.AddFavourite();
+
+
           },
         ),
         /*

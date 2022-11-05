@@ -1,6 +1,7 @@
 import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled12/AuthService.dart';
 import 'package:untitled12/bodyFavorite.dart';
 import 'package:untitled12/main.dart';
 
@@ -88,40 +89,48 @@ class _History_modelState extends State<History_model> {
                       Navigator.push(
                           context, MaterialPageRoute(builder: (context) => hotel_description()));
                     },
-                    child: ListTile(
-                      contentPadding: EdgeInsets.all(8),
-                      title: Text(
-                        display_list[index].name!,
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      subtitle: Text(
-                        '${display_list[index].location!}',
-                        style: TextStyle(color: Colors.black),
-                      ),
-                      leading: Container(
-                          height:50 ,
-                            width: 50,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                  image:NetworkImage(
-                                    display_list[index].x!),
-                              )
-                            ),
+                    child: Column(
+                      children: [
+                        ListTile(
+                          tileColor: Colors.black26,
+                          contentPadding: EdgeInsets.all(8),
+                          title: Text(
+                            display_list[index].name!,
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          subtitle: Text(
+                            '${display_list[index].location!}',
+                            style: TextStyle(color: Colors.black),
+                          ),
+                          leading: Container(
+                              height:50 ,
+                                width: 50,
+                                decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image:NetworkImage(
+                                        display_list[index].x!),
+                                  )
+                                ),
 
-                      ),
-                      trailing: FavoriteButton(
-                        isFavorite: false,
-                        // iconDisabledColor: Colors.white,
-                        valueChanged: (_isFavorite) {
+                          ),
+                          trailing: FavoriteButton(
+                            isFavorite: false,
+                            // iconDisabledColor: Colors.white,
+                            valueChanged: (_isFavorite) {
 
-                          bodyFavorite.favList.add(index);
-                        //  bodyFavorite.favList.add(Myapp.selectedHotel);
-                          print('Is Favorite : $_isFavorite');
-                        },
-                      ),
+                              bodyFavorite.favList.add(index);
+                            //  bodyFavorite.favList.add(Myapp.selectedHotel);
+                              print('Is Favorite : $_isFavorite');
+
+                              AuthService.AddFavourite();
+                            },
+                          ),
                   ),
+                        SizedBox(height: 25,)
+                      ],
+                    ),
                 )
                 )
             )],
