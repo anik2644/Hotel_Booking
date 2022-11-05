@@ -11,7 +11,7 @@ class _ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context) {
     return   Scaffold(
-    appBar:  AppBar(
+    appBar:  AppBar(leading: BackButton(),
     title: const Text("ChatPage"),
     ),
     body: const Center(

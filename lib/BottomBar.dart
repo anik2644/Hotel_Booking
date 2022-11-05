@@ -2,8 +2,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled12/AuthService.dart';
+import 'package:untitled12/account/signin_page.dart';
 import 'package:untitled12/screens/chats/chats_screen.dart';
-
 import 'ChatPage.dart';
 import 'HistoryPage.dart';
 import 'LoginPage.dart';
@@ -75,7 +75,7 @@ class _Bottom1State extends State<Bottom1> {
 
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) =>  AuthService().handleAuthState()),//AccountPage()),
+                MaterialPageRoute(builder: (context) =>  SignIn()),//AccountPage()),
               );
             },
           ),

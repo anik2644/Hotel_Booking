@@ -1,6 +1,5 @@
 //Determine if the user is authenticated.
 
-//<<<<<<< HEAD
 import 'package:cloud_firestore/cloud_firestore.dart';
 //=======
 //>>>>>>> 59644ea8b91eeaedf805e8efd8cb3ab7c3db0d4f
@@ -153,7 +152,7 @@ class AuthService{
             // print(msge.text);
             // print(msge.isSender);
             // ddemeChatMessages.add(msge);
-            print("hellon world");
+            print("hellow world");
             print(ddemeChatMessages.length);
             // print(result.id);
           })
@@ -161,42 +160,4 @@ class AuthService{
       })
     });
   }
-
-//=======
-//>>>>>>> 59644ea8b91eeaedf805e8efd8cb3ab7c3db0d4f
-
-
-/*
-  signInWithGoogle() async {
-
-
-    // Trigger the authentication flow
-    final GoogleSignInAccount? googleUser = await GoogleSignIn(scopes: <String>["email"]).signIn();
-
-    // Obtain the auth details from the request
-    final GoogleSignInAuthentication googleAuth = await googleUser!.authentication;
-
-    // Create a new credential
-    final credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth.accessToken,
-      idToken: googleAuth.idToken,
-    );
-
-    return await FirebaseAuth.instance.signInWithCredential(credential);
-  }
-
-  signOut() {
-    
-   // print("i am signout\n\n\n\n\n\n\n\n\n\n\n\n");
-
-    FirebaseAuth.instance.signOut();
-  }
-
-  Backpressed() {
-
-   // Navigator.of(context).pop();
-
-  }
-*/
-
 }

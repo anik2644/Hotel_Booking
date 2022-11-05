@@ -54,6 +54,8 @@ class _ChatsScreenState extends State<ChatsScreen> {
   AppBar buildAppBar() {
     return AppBar(
       automaticallyImplyLeading: false,
+      leading: BackButton(),
+      backgroundColor: Colors.black,
       title: Text("Chats"),
       actions: [
         IconButton(
