@@ -52,12 +52,13 @@ class _bodyFavoriteState extends State<bodyFavorite> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          //backgroundColor: Colors.white60,//Color(0xFF1f1545),
-          // backgroundColor: Colors.black,
+           //backgroundColor: Colors.white60,//Color(0xFF1f1545),
+          backgroundColor: Colors.black54,
           appBar: AppBar(
+            leading: BackButton(color: Colors.white,),
             backgroundColor: Colors.black,
             title: Center(
-              child: Text("Favourite"),
+              child: Text("Favourite",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
             ),
           ),
 
@@ -82,7 +83,7 @@ class _bodyFavoriteState extends State<bodyFavorite> {
                             child: Text(
                               "No result found",
                               style: TextStyle(
-                                  color: Colors.black87,
+                                  color: Colors.black,
                                   fontSize: 22,
                                   fontWeight: FontWeight.bold),
                             ),
@@ -105,10 +106,10 @@ class _bodyFavoriteState extends State<bodyFavorite> {
                             child: Column(
 
                               children: [
-                                SizedBox(height: 25,),
+
                                 ListTile(
                                   contentPadding: EdgeInsets.all(8),
-                                  tileColor: Colors.black87,
+                                  tileColor: Colors.black54,
                                   title: Text(
                                     display_list1[index].name!,
                                     style: TextStyle(
@@ -128,8 +129,8 @@ class _bodyFavoriteState extends State<bodyFavorite> {
                                               display_list1[index].x!),
                                         )),
                                   ),
-
                                 ),
+                                SizedBox(height: 15,),
                               ],
                             ),
                           )))

@@ -105,7 +105,7 @@ class _History_modelState extends State<History_model> {
 
                           ),
                           trailing: FavoriteButton(
-                            isFavorite: false,
+                            isFavorite: bodyFavorite.favList.contains(hist[index]) ?true : false,
                             // iconDisabledColor: Colors.white,
                             valueChanged: (_isFavorite) {
 

@@ -260,7 +260,7 @@ Widget titleSection(){
         FavoriteButton(
 
 
-          isFavorite: false,
+          isFavorite: bodyFavorite.favList.contains(Myapp.selectedHotel) ?true : false,
           // iconDisabledColor: Colors.white,
           valueChanged: (_isFavorite) async {
 
