@@ -17,15 +17,19 @@ class MessagesScreen extends StatefulWidget {
 
 class _MessagesScreenState extends State<MessagesScreen> {
   //var chatdocid;
-
+ static int mf=0;
   @override
   void initState() {
-    super.initState();
-    //checkUser();
-    //  AuthService.ddemeChatMessages.clear();
 
-    if(AuthService.ddemeChatMessages.length==0)
-      AuthService.FetchMEssage();
+    super.initState();
+
+    if(AuthService.ddemeChatMessages.length==0&&mf==0)
+      {
+        mf=0;
+         print("object");
+        AuthService.FetchMEssage();
+      }
+
 
   }
 
@@ -46,6 +50,15 @@ class _MessagesScreenState extends State<MessagesScreen> {
   }
   Future<Null> refreshList()
   async {
+     /*
+       if(AuthService.ddemeChatMessages.length>=mf*2&&mf>2)
+         {
+           AuthService.ddemeChatMessages.clear();
+          // AuthService.ddemeChatMessages.removeAt(mf+1)
+         }
+
+      */
+
     Navigator.pushReplacement(context, MaterialPageRoute(
         builder: (BuildContext context) => MessagesScreen()));
 /*
@@ -104,28 +117,19 @@ print(AuthService.ddemeChatMessages.length);
   }
   AppBar buildAppBar() {
     return AppBar(
-      /* leading: BackButton(
-        onPressed: (){
-          AuthService.ddemeChatMessages.clear();
-          AuthService.FetchMEssage();
-         // Navigator.push(context,MaterialPageRoute(builder: (context) =>FunctioN()));
-
-        },
-      ),*/
       automaticallyImplyLeading: false,
       backgroundColor: Colors.black,
       leading: BackButton(
         onPressed: (){
+
+          mf=1;
           AuthService.ddemeChatMessages.clear();
+          AuthService.FetchMEssage();
           Navigator.pop(context);
         },
       ),
 
       title: Row(
-
-        // mainAxisAlignment: MainAxisAlignment.center,
-        //crossAxisAlignment: CrossAxisAlignment.center,
-
         children: [
           // DecorationPosition.background= Colors.black,
           CircleAvatar(
@@ -164,8 +168,12 @@ print(AuthService.ddemeChatMessages.length);
 
           icon: Icon(Icons.refresh_sharp),
           onPressed: () {
-            AuthService.ddemeChatMessages.clear();
 
+            mf= 1;// AuthService.ddemeChatMessages.length;
+            AuthService.ddemeChatMessages.clear();
+            AuthService.FetchMEssage();
+
+           print("Refresh shart");
             Navigator.pushReplacement(context, MaterialPageRoute(
                 builder: (BuildContext context) => MessagesScreen()));
 

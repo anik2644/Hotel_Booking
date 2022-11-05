@@ -136,7 +136,6 @@ class AuthService{
         .get().then((value) => {
       chatdocid= value.docs.single.id,
       value.docs.forEach((result) {
-        print(result.data());
         FirebaseFirestore.instance.collection("adminchats")
             .doc(chatdocid)
             .collection("messages").orderBy('createdOn',  descending: false)
@@ -148,14 +147,7 @@ class AuthService{
           subcol.docs.forEach((element) {
             var data;
             data= element.data();
-
-
             ddemeChatMessages.add(ChatMessage( data["msg"].toString() ,ChatMessageType.text,MessageStatus.viewed, data["uid"]==AuthService.email ? true : false));
-
-            //ChatMessage();
-            // print(msge.text);
-            // print(msge.isSender);
-            // ddemeChatMessages.add(msge);
             print("hellow world");
             print(ddemeChatMessages.length);
             // print(result.id);
@@ -193,17 +185,7 @@ class AuthService{
                   //'name[1]': "Mahmud",
 
                 }),
-                /*
-                //print(value.data())
-                fav = value["index"],
-                print(fav[0]),
 
-                for(int i=0;i<fav.length;i++)
-                  {
-                    bodyFavorite.favList.add(fav[i])
-                  }
-
-                 */
               }
             });
 

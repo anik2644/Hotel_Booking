@@ -12,8 +12,6 @@ class ChatInputField extends StatelessWidget {
     // required this.indx;
   }) : super(key: key);
 
-  //final int indx;
-
   @override
   Widget build(BuildContext context) {
     var message_type_box_controller = new TextEditingController();
@@ -87,12 +85,6 @@ class ChatInputField extends StatelessWidget {
                     IconButton(
                         onPressed: () async {
 
-                          //  print(message_type_box_controller.text);
-
-                          //- AuthService.ddemeChatMessages.clear();
-                          // AuthService.FetchMEssage();
-
-
                           final friendUid = "admin";
                           final currentUserId = AuthService.email;
                           var chatDocId;
@@ -144,7 +136,6 @@ class ChatInputField extends StatelessWidget {
                               true ));
 
 
-                          // print("message sent done");
                           message_type_box_controller.text = "";
 
                           Navigator.pushReplacement(context, MaterialPageRoute(

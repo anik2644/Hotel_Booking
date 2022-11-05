@@ -106,6 +106,9 @@ class SignIn extends StatelessWidget {
 
                     bodyFavorite.favList.clear();
                     AuthService.FetchFavourite();
+
+                    AuthService.ddemeChatMessages.clear();
+                    AuthService.FetchMEssage();
                    // bodyFavorite.f=1;
                     Navigator.push(
                       context,

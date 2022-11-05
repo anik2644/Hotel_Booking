@@ -32,8 +32,8 @@ class Message extends StatelessWidget {
       switch (message.messageType) {
         case ChatMessageType.text:
           {
-            print("in message class");
-            print(message.text);
+           // print("in message class");
+           // print(message.text);
             return TextMessage(message: message);
           }
         case ChatMessageType.audio:
@@ -69,20 +69,12 @@ class Message extends StatelessWidget {
 }
 
 class MessageForAdmin extends StatelessWidget {
-/*
-  const Message({
-    Key? key,
-    required this.message,
-   // required print(message),
-
-  }) : super(key: key);
-*/
 
   ChatMessage message;
   MessageForAdmin( this.message)
   {
-    print("in message class");
-    print(message.text);
+   // print("in message class");
+   // print(message.text);
   }
 
 
