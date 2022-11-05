@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:untitled12/main.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -34,6 +35,8 @@ class hotel_description extends StatefulWidget {
 
 class _hotel_descriptionState extends State<hotel_description> {
   String get name => name;
+  var hotel_number = '01572555945';
+  var hotel_location = 'House#,road#,villege,town,country';
   @override
   Widget build(BuildContext context) {
     // Color color = Theme.of(context).primaryColor;
@@ -146,7 +149,9 @@ class _hotel_descriptionState extends State<hotel_description> {
 
                       ),
 
-                      onPressed: () {},
+                      onPressed: () async {
+                        FlutterPhoneDirectCaller.callNumber(hotel_number);
+                      },
 
                     ),
 
@@ -156,7 +161,7 @@ class _hotel_descriptionState extends State<hotel_description> {
 
                         color: Colors.blue,
 
-                        Icons.near_me,
+                        Icons.chat,
 
                       ),
 
@@ -196,11 +201,22 @@ class _hotel_descriptionState extends State<hotel_description> {
 
                         color: Colors.blue,
 
-                        Icons.share,
+                        Icons.location_on,
 
                       ),
 
-                      onPressed: () {},
+                      onPressed: () {
+                        AlertDialog alert = AlertDialog(
+                          title: Text('Location:'),
+                          content: Text(hotel_location),
+                        );
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return alert;
+                          },
+                        );
+                      },
 
                     ),
 
@@ -221,7 +237,22 @@ class _hotel_descriptionState extends State<hotel_description> {
         ),
       ),
       backgroundColor: Colors.white,
-      floatingActionButton: buildNavigationButton(),
+      floatingActionButton: FloatingActionButton.extended(
+          icon: Icon(Icons.book),
+          label: Text("Book Now"),
+          backgroundColor: Colors.green,
+          onPressed: () {
+            AlertDialog alert = AlertDialog(
+              title: Text('Contact us for Booking:'),
+              content: Text(hotel_number),
+            );
+            showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return alert;
+              },
+            );
+          })
     );
   }
 }
