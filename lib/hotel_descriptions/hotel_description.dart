@@ -113,7 +113,7 @@ class _hotel_descriptionState extends State<hotel_description> {
                   aspectRatio: 16 / 9,
                   autoPlayCurve: Curves.fastOutSlowIn,
                   enableInfiniteScroll: true,
-                  autoPlayAnimationDuration: Duration(milliseconds: 800),
+                  autoPlayAnimationDuration: Duration(milliseconds: 600),
                   viewportFraction: 0.8,
                 ),
               ),
@@ -208,7 +208,7 @@ class _hotel_descriptionState extends State<hotel_description> {
                       onPressed: () {
                         AlertDialog alert = AlertDialog(
                           title: Text('Location:'),
-                          content: Text(hotel_location),
+                          content: Text( Myapp.hotelList[Myapp.selectedHotel].location),
                         );
                         showDialog(
                           context: context,

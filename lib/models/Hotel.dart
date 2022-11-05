@@ -1,3 +1,5 @@
+//import 'dart:js_util';
+
 class Hotel{
  late String name;
  late String description;
@@ -15,13 +17,17 @@ class Hotel{
  late String y ;
  late String z;
  bool isFav=false;
-  String cellNo= "01521756345";
+ String cellNo= "01521756345";
+ late String address;
   //List <String> image;
 
 
   //
-   Hotel(String name,String description,String x,String y,String z)
+   Hotel(String location,String address,String name,String description,String x,String y,String z)
   {
+
+    this.location=location;
+    this.address=address;
       this.name= name;
       this.description= description;
       this.x =x;

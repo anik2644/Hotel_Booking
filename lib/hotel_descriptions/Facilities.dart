@@ -247,7 +247,7 @@ Widget titleSection(){
                     color: Colors.green,
                   ),
                   Text(
-                    'Coxs Bazaar, Chittagong',
+                    Myapp.hotelList[Myapp.selectedHotel].address,
                     style: TextStyle(
                         color: Colors.grey[500], fontWeight: FontWeight.bold),
                   ),

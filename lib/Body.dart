@@ -64,9 +64,8 @@ class _MybodyState extends State<Mybody> {
                   image: DecorationImage(
                     image: NetworkImage(
                         imageVal
-                        //"https://www.exampledomain.com/images/background.jpg"
                     ),
-                    fit: BoxFit.cover,),// child: Image.network(imageVal)
+                    fit: BoxFit.cover,),
               ),
               ),
 
@@ -135,7 +134,7 @@ class _MybodyState extends State<Mybody> {
                   itemBuilder: (context, index) => MyArticles(
                       display_list[index].x,
                       display_list[index].name,
-                      display_list[index].location,index
+                      display_list[index].address,index
                   ),
                 ),
 
