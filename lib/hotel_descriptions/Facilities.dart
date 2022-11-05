@@ -263,6 +263,7 @@ Widget titleSection(){
           isFavorite: false,
           // iconDisabledColor: Colors.white,
           valueChanged: (_isFavorite) async {
+
             bodyFavorite.favList.add(Myapp.selectedHotel);
             print('Is Favorite : $_isFavorite');
            AuthService.AddFavourite();

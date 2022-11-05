@@ -150,7 +150,7 @@ class _hotel_descriptionState extends State<hotel_description> {
                       ),
 
                       onPressed: () async {
-                        FlutterPhoneDirectCaller.callNumber(hotel_number);
+                        FlutterPhoneDirectCaller.callNumber(Myapp.hotelList[Myapp.selectedHotel].cellNo);
                       },
 
                     ),

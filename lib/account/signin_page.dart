@@ -1,5 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:untitled12/AuthService.dart';
 import 'package:untitled12/account/profile.dart';
+import 'package:untitled12/bodyFavorite.dart';
+
+import '../main.dart';
 
 
 class SignIn extends StatelessWidget {
@@ -11,7 +17,15 @@ class SignIn extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        leading: BackButton(),
+        leading: BackButton(
+          onPressed: ()
+          {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Myapp()),//AccountPage()),
+            );
+          },
+        ),
         backgroundColor: Colors.black,
         title: Text("Sign In",
           style: TextStyle(
@@ -66,11 +80,39 @@ class SignIn extends StatelessWidget {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: InkWell(
-                  onTap: (){
+                  onTap: () async {
+
+
+                    GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ['email']);
+                    GoogleSignInAccount? user =_googleSignIn.currentUser;
+
+                    final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
+                    final GoogleSignInAuthentication googleAuth = await googleUser!.authentication;
+
+                    // Create a new credential
+                    final credential = GoogleAuthProvider.credential(
+                      accessToken: googleAuth.accessToken,
+                      idToken: googleAuth.idToken,
+
+                    );
+
+
+                    await FirebaseAuth.instance.signInWithCredential(credential);
+                    AuthService.is_login =true;
+                    AuthService.name =   FirebaseAuth.instance.currentUser!.displayName!;
+                    AuthService.email =   FirebaseAuth.instance.currentUser!.email!;
+                    AuthService.currentUserId= AuthService.email;
+                    AuthService.Profilepicurl =  FirebaseAuth.instance.currentUser!.photoURL!;
+
+                    bodyFavorite.favList.clear();
+                    AuthService.FetchFavourite();
+                   // bodyFavorite.f=1;
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) =>  Profile()),
+                      MaterialPageRoute(builder: (context) =>  AuthService().handleAuthState()),//AccountPage()),
                     );
+
+
                   },
                   child: Row(
 

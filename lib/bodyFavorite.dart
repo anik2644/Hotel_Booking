@@ -53,7 +53,7 @@ class _bodyFavoriteState extends State<bodyFavorite> {
     return SafeArea(
       child: Scaffold(
           //backgroundColor: Colors.white60,//Color(0xFF1f1545),
-           backgroundColor: Colors.black,
+          // backgroundColor: Colors.black,
           appBar: AppBar(
             backgroundColor: Colors.black,
             title: Center(
@@ -74,16 +74,23 @@ class _bodyFavoriteState extends State<bodyFavorite> {
                   ),
                   Expanded(
                       child: display_list1.length == 0
-                          ? Center(
-                        child: Text(
-                          "No result found",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold),
+                          ?
+                      Center(
+                        child: Container(
+                          color: Colors.white,
+                          child: Center(
+                            child: Text(
+                              "No result found",
+                              style: TextStyle(
+                                  color: Colors.black87,
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
                         ),
                       )
-                          : ListView.builder(
+                          :
+                      ListView.builder(
                           itemCount: display_list1.length,
                           itemBuilder: (context, index) => GestureDetector(
                             onTap: () {
@@ -101,16 +108,16 @@ class _bodyFavoriteState extends State<bodyFavorite> {
                                 SizedBox(height: 25,),
                                 ListTile(
                                   contentPadding: EdgeInsets.all(8),
-                                  tileColor: Colors.white,
+                                  tileColor: Colors.black87,
                                   title: Text(
                                     display_list1[index].name!,
                                     style: TextStyle(
-                                        color: Colors.black,
+                                        color: Colors.white,
                                         fontWeight: FontWeight.bold),
                                   ),
                                   subtitle: Text(
                                     '${display_list1[index].location!}',
-                                    style: TextStyle(color: Colors.black),
+                                    style: TextStyle(color: Colors.white70),
                                   ),
                                   leading: Container(
                                     height: 50,
@@ -121,16 +128,7 @@ class _bodyFavoriteState extends State<bodyFavorite> {
                                               display_list1[index].x!),
                                         )),
                                   ),
-                                  /*
-                    trailing: FavoriteButton(
-                     isFavorite: false,
-                     // iconDisabledColor: Colors.white,
-                     valueChanged: (_isFavorite) {
 
-
-                      print('Is Favorite : $_isFavorite');
-                     },
-                    ),*/
                                 ),
                               ],
                             ),

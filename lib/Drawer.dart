@@ -39,14 +39,8 @@ class _MydrawerState extends State<Mydrawer> {
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
-          AuthService.is_login ?  UserAccountsDrawerHeader(
-            /*
-<<<<<<< HEAD
-
-=======
->>>>>>> 59644ea8b91eeaedf805e8efd8cb3ab7c3db0d4f
-
-           */
+          AuthService.is_login ?
+          UserAccountsDrawerHeader(
             decoration: BoxDecoration(color: Colors.white),
             accountName: Text(
               AuthService.name,
@@ -58,7 +52,8 @@ class _MydrawerState extends State<Mydrawer> {
               // backgroundColor: Colors.black,
               backgroundImage:  NetworkImage(AuthService.Profilepicurl.toString(), ),//height: 100, width: 100, ),
             ),
-          ):  DrawerHeader(
+          ):
+          DrawerHeader(
             decoration: BoxDecoration(
               color: Colors.white,
             ),
@@ -80,8 +75,6 @@ class _MydrawerState extends State<Mydrawer> {
                           Container(),
 
                           Center(
-
-//>>>>>>> 59644ea8b91eeaedf805e8efd8cb3ab7c3db0d4f
                             child: OutlinedButton(
                             //  color:Colors.green,
                               child:Container(child: Text('Login')),
@@ -92,7 +85,7 @@ class _MydrawerState extends State<Mydrawer> {
                                   MaterialPageRoute(builder: (context) =>  AuthService().handleAuthState()),//AccountPage()),
                                 );
 
-                                AuthService.is_login=true;
+                                //AuthService.is_login=true;
                               });}, ),
 
 
@@ -136,7 +129,11 @@ class _MydrawerState extends State<Mydrawer> {
             title:
             Text("Contact Us", style: TextStyle(color: Colors.white)),
             onTap: () {
-              Navigator.push(context,MaterialPageRoute(builder: (context) =>MessagesScreen(),));
+              AuthService.is_login ?
+              Navigator.push(context,MaterialPageRoute(builder: (context) =>MessagesScreen(),))
+              :
+              Navigator.push(context,MaterialPageRoute(builder: (context) => AuthService().handleAuthState(),))
+              ;
             },
           ),
           ListTile(
@@ -163,7 +160,7 @@ class _MydrawerState extends State<Mydrawer> {
               color: Colors.white,
             ),
             title: Text(
-              "Logout",
+              AuthService.is_login ?"Logout": "Login",
               style: TextStyle(color: Colors.white),
             ),
             onTap: () {

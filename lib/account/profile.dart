@@ -1,5 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:untitled12/AuthService.dart';
 import 'package:untitled12/account/signin_page.dart';
+import 'package:untitled12/bodyFavorite.dart';
+import 'package:untitled12/main.dart';
 
 import 'editPage.dart';
 
@@ -20,9 +25,18 @@ class _ProfileState extends State<Profile> {
       resizeToAvoidBottomInset: false,
 
       appBar: AppBar(
-        leading: BackButton(),
-        title: Text("User Account"),
+        leading: BackButton(
+          onPressed: ()
+          {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Myapp()),//AccountPage()),
+            );
+          },
+        ),
+        title: Center(child: Text("User Account")),
         backgroundColor: Colors.black,
+
       ),
       body: SafeArea(
           child: Column(
@@ -32,7 +46,7 @@ class _ProfileState extends State<Profile> {
           SizedBox(
             height: 10,
           ),
-          _profileName(Profile().name),
+          _profileName(AuthService.name),
           SizedBox(
             height: 14,
           ),
@@ -71,9 +85,10 @@ class _ProfileState extends State<Profile> {
                 image: DecorationImage(
                     fit: BoxFit.fill,
                     image: NetworkImage(
-                        "https://as1.ftcdn.net/v2/jpg/02/09/95/42/1000_F_209954204_mHCvAQBIXP7C2zRl5Fbs6MEWOEkaX3cA.jpg"))
+                        AuthService.Profilepicurl.toString()
+                       // "https://as1.ftcdn.net/v2/jpg/02/09/95/42/1000_F_209954204_mHCvAQBIXP7C2zRl5Fbs6MEWOEkaX3cA.jpg"))
                 // color: Colors.orange[100],
-                ),
+                    ))),
           ),
         ),
       ],
@@ -114,7 +129,7 @@ class _ProfileState extends State<Profile> {
             Card(
               child: ListTile(
                 leading: Icon(Icons.email),
-                title: Text(Profile().email),
+                title: Text(AuthService.email),
               ),
             ),
             Divider(
@@ -175,8 +190,30 @@ class _ProfileState extends State<Profile> {
 
   Widget logoutButton() {
     return InkWell(
-      onTap: () {
+      onTap: () async {
+
+
+        GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ['email']);
+        GoogleSignInAccount? user =_googleSignIn.currentUser;
+
+        await _googleSignIn.signOut();
+        FirebaseAuth.instance.signOut();
+        AuthService.is_login=false;
+
+
+        bodyFavorite.favList.clear();
+        //AuthService.FetchFavourite();
+
+        setState((){
+
+          print(user!.email);
+          print("sign out done\n\n\n");
+
+        });
+
         Navigator.push(context, MaterialPageRoute(builder: (context)=> SignIn()));
+
+
       },
       child: Container(
           color: Colors.black,

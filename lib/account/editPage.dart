@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:untitled12/AuthService.dart';
 import 'package:untitled12/account/profile.dart';
 
 class editPage extends StatefulWidget {
@@ -38,7 +39,7 @@ class _editPageState extends State<editPage> {
               SizedBox(
                 height: 10,
               ),
-              _profileName(editPage().name),
+              _profileName(AuthService.name),
               SizedBox(
                 height: 14,
               ),
@@ -80,7 +81,9 @@ class _editPageState extends State<editPage> {
                 image: DecorationImage(
                     fit: BoxFit.fill,
                     image: NetworkImage(
-                        "https://as1.ftcdn.net/v2/jpg/02/09/95/42/1000_F_209954204_mHCvAQBIXP7C2zRl5Fbs6MEWOEkaX3cA.jpg"))
+                      AuthService.Profilepicurl.toString()
+                        //"https://as1.ftcdn.net/v2/jpg/02/09/95/42/1000_F_209954204_mHCvAQBIXP7C2zRl5Fbs6MEWOEkaX3cA.jpg"
+                    ))
               // color: Colors.orange[100],
             ),
           ),
@@ -123,7 +126,7 @@ class _editPageState extends State<editPage> {
             Card(
               child: ListTile(
                 leading: Icon(Icons.email),
-                title: Text(editPage().email),
+                title: Text(AuthService.email),
               ),
             ),
 

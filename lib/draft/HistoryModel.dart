@@ -48,18 +48,7 @@ class _History_modelState extends State<History_model> {
 
   @override
   Widget build(BuildContext context) {
-     return
-       /*
-       Scaffold(
-      backgroundColor: Colors.white60,//Color(0xFF1f1545),
-      appBar: AppBar(
-        backgroundColor: Color(0xFF1f1545),
-        elevation: 0.0,
-        title: Text("Searching"),
-      ),
-      body:
-        */
-      Padding(
+     return Padding(
         padding: EdgeInsets.all(16),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -84,7 +73,7 @@ class _History_modelState extends State<History_model> {
                     itemBuilder: (context, index) => GestureDetector(
 
                     onTap: () {
-                      Myapp.selectedHotel= index;
+                      Myapp.selectedHotel= hist[index];
                       print(Myapp.selectedHotel);
                       Navigator.push(
                           context, MaterialPageRoute(builder: (context) => hotel_description()));
@@ -120,11 +109,10 @@ class _History_modelState extends State<History_model> {
                             // iconDisabledColor: Colors.white,
                             valueChanged: (_isFavorite) {
 
-                              bodyFavorite.favList.add(index);
-                            //  bodyFavorite.favList.add(Myapp.selectedHotel);
+                              bodyFavorite.favList.add(hist[index]);
                               print('Is Favorite : $_isFavorite');
-
                               AuthService.AddFavourite();
+
                             },
                           ),
                   ),

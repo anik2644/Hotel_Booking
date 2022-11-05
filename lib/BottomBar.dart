@@ -33,7 +33,7 @@ class _Bottom1State extends State<Bottom1> {
 
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) =>  ChatsScreen(),),
+                MaterialPageRoute(builder: (context) => AuthService.is_login ? ChatsScreen() : AuthService().handleAuthState(),),
               );
             },
           ),
@@ -73,10 +73,19 @@ class _Bottom1State extends State<Bottom1> {
             icon: Icon(Icons.home),
             onPressed:  (){
 
+             // AuthService().handleAuthState();
+
+
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) =>  AuthService().handleAuthState()),//AccountPage()),
+              );
+              /*
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) =>  SignIn()),//AccountPage()),
               );
+               */
             },
           ),
           label: 'Account',

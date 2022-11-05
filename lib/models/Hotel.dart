@@ -23,9 +23,9 @@ class Hotel{
 
 
   //
-   Hotel(String location,String address,String name,String description,String x,String y,String z)
+   Hotel(String cellNo,String location,String address,String name,String description,String x,String y,String z)
   {
-
+     this.cellNo= cellNo;
     this.location=location;
     this.address=address;
       this.name= name;

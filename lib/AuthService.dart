@@ -6,6 +6,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:untitled12/account/profile.dart';
+import 'package:untitled12/account/signin_page.dart';
 import 'package:untitled12/bodyFavorite.dart';
 import 'package:untitled12/main.dart';
 
@@ -70,16 +72,16 @@ class AuthService{
             AuthService.is_login =true;
             AuthService.name =   FirebaseAuth.instance.currentUser!.displayName!;
             AuthService.email =   FirebaseAuth.instance.currentUser!.email!;
-
             AuthService.currentUserId= AuthService.email;
+            AuthService.Profilepicurl =  FirebaseAuth.instance.currentUser!.photoURL!;
             // currentUserId=  AuthService.email;
             // FetchMEssage();
 
-            return HomePage();
+            return Profile(); //HomePage();
           } else {
             AuthService.currentUserId= AuthService.email;
             print("It is really beautiful");
-            return const  GoogleSignInApp();  //LoginPage();
+            return SignIn(); // const  GoogleSignInApp(); //SignIn();//const  //GoogleSignInApp();  //LoginPage();
           }
         });
   }
@@ -163,8 +165,7 @@ class AuthService{
     });
   }
 
-  static AddFavourite()
-  async {
+  static AddFavourite() async {
 
 
 
@@ -209,8 +210,6 @@ class AuthService{
 
 
   }
-
-
 
  static FetchFavourite() async {
 
