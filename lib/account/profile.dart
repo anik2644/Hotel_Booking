@@ -11,7 +11,8 @@ import 'editPage.dart';
 class Profile extends StatefulWidget {
   var name = 'Sabbir Ahmed';
   var email = 'sabbir.rzs17@gmail.com';
-  var cell = '01521756345';
+  static var cell = '';
+  static var location = '';
   static const routeName = "/profile";
 
   @override
@@ -140,7 +141,7 @@ class _ProfileState extends State<Profile> {
             Card(
               child: ListTile(
                 leading: Icon(Icons.phone),
-                title: Text(Profile().cell),
+                title: Text(Profile.cell),
               ),
             ),
             Divider(
@@ -150,7 +151,7 @@ class _ProfileState extends State<Profile> {
             Card(
                 child: ListTile(
               leading: Icon(Icons.location_on),
-              title: Text('Dhaka'),
+              title: Text(Profile.location),
             ))
           ],
         ),

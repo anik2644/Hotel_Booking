@@ -5,7 +5,8 @@ import 'package:untitled12/account/profile.dart';
 class editPage extends StatefulWidget {
   var name = 'Sabbir Ahmed';
   var email = 'sabbir.rzs17@gmail.com';
-  var cell = '01521756345';
+  static var cell = '';
+  static var location ='';
   static const routeName = "/profile";
 
   @override
@@ -150,7 +151,7 @@ class _editPageState extends State<editPage> {
             Card(
                 child: ListTile(
                   leading: Icon(Icons.location_on),
-                  title: buildTextField(' Location', 'Enter your location:', false),
+                  title: buildTextFieldl(' Location', 'Enter your location:', false),
                 )),
 
           ],
@@ -163,6 +164,8 @@ class _editPageState extends State<editPage> {
   Widget saveButton() {
     return InkWell(
       onTap: () {
+        Profile.location = editPage.location;
+        Profile.cell = editPage.cell;
         Navigator.push(context, MaterialPageRoute(builder: (context) => Profile()));
       },
       child: Container(
@@ -192,6 +195,9 @@ class _editPageState extends State<editPage> {
     return Padding(
       padding: const EdgeInsets.all(11),
       child: TextField(
+        onChanged: (Text) {
+          editPage.cell=Text;
+        },
         decoration: InputDecoration(
 
             contentPadding: EdgeInsets.only(bottom: 3),
@@ -207,3 +213,27 @@ class _editPageState extends State<editPage> {
   }
 
 }
+
+Widget buildTextFieldl(
+    String labelText, String placeholder, bool isPasswordTextField) {
+  return Padding(
+    padding: const EdgeInsets.all(11),
+    child: TextField(
+      onChanged: (Text) {
+        editPage.location=Text;
+      },
+      decoration: InputDecoration(
+
+          contentPadding: EdgeInsets.only(bottom: 3),
+          labelText: labelText,
+          floatingLabelBehavior: FloatingLabelBehavior.always,
+          hintText: placeholder,
+          hintStyle: TextStyle(
+            fontSize: 12,
+            color: Colors.black87,
+          )),
+    ),
+  );
+}
+
+
