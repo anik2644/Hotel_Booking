@@ -146,6 +146,7 @@ class Myapp extends StatefulWidget {
           AuthService.FetchFavourite();
 
           AuthService.FetchMEssage();
+          AuthService.FetchOffers();
         }
 
         Myapp.FetchHotel();
@@ -264,6 +265,7 @@ class _MyappState extends State<Myapp> {
           bodyFavorite.favList.clear();
           AuthService.FetchFavourite();
           AuthService.FetchMEssage();
+          AuthService.FetchOffers();
 
         }
         Myapp.FetchHotel();
