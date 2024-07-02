@@ -15,12 +15,14 @@ Campus Transport Service is a Flutter and Firebase-based Android app designed fo
 
 Watch our demo video to see Campus Transport Service in action: [Demo Video](https://youtu.be/7S7cZd66Sdo?si=Y4oI70LBKDeF6UEl)
 
+
 ## Features
 
-- **Real-Time Bus Location Tracking**: Students can track the real-time location of university buses on a map.
-- **Bus Notices**: Notifications for important bus-related updates such as delays or changes in routes.
-- **Schedules**: Access to bus schedules for different routes and timings.
-- **User Authentication**: Secure login and registration system for users.
+- **Authentication**: Secure login and registration system for users.
+- **Hotel Listings**: Browse different types of hotels available for booking.
+- **Booking Facilities**: Easily book hotels with intuitive booking features.
+- **Real-Time Chat**: Chat with hotel staff or other users for inquiries or assistance.
+- **User Profile**: Manage personal information and booking history.
 
 ## Tech Stack
 
